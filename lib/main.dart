@@ -1,37 +1,212 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+  MyApp()
+);
+
+
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Primera App en Flutter Vscode',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.pink,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Flutter Hello world'),
+      home: MyHomePage(title: 'Hello Flutter!'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body:  Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Image.network(
+              'https://loremflickr.com/g/320/240/paris',
+              fit: BoxFit.fill,
+            ),
+        const ListTile(
+          title: Text('Foto con animación Hero'),
+          subtitle: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur'),
+        ),
+        ButtonBar(
+          children: <Widget>[
+            FlatButton(
+              child: const Text('VER MÁS'),textColor: Colors.red,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()
+                )
+                );
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
+    ), 
+    );
+  }
+}
+
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+
+        title: Text("Details page"),
+
+      ),
+      body: Center(
+        child: Image.network(
+        'https://loremflickr.com/g/320/240/paris',
+        fit: BoxFit.fill,
+      ),
+      ),
+    );
+  }
+}
+
+
+
+/*import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+ 
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(  
+        primarySwatch: Colors.red,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      //home: MyHomePage(title: 'Botones'),
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Botones'),
+        ),
+        body: GridView.count(
+          crossAxisCount: 1,
+          //childAspectRatio: 4 / 3,
+        children: <Widget>[
+          btnone(
+            child:RaisedButton(
+              child:Text('Puchame!'),
+                onPressed: () {
+                  print('Me puchasteeeee!!!');
+                },
+            )
+          ),
+             btnone(
+            child:RaisedButton(
+              child:Text('Puchame!'),
+                onPressed: () {
+                  print('Me puchasteeeee!!!');
+                },
+                color: Colors.amber,
+                textColor: Colors.white,
+            )
+          ),
+             btnone(
+            child:RaisedButton(
+              child:Text('Puchame!'),
+            ) ,
+           
+          ),
+            btnone(
+            child:FlatButton(
+              //child:Text('Puchame!'),
+                onPressed: () {
+                  //print('Me puchasteeeee!!!');
+                },
+                child: Text('Aprieta!'),
+                //color: Colors.pink,
+            )
+          ),
+           btnone(
+            child:FlatButton(
+              //child:Text('Puchame!'),
+                onPressed: () {
+                  //print('Me puchasteeeee!!!');
+                },
+                child: Text('Aprieta!'),
+                color: Colors.green,
+                textColor: Colors.white,
+            )
+          ), btnone(
+            child:FlatButton(
+              //child:Text('Puchame!'),
+                onPressed: () {
+                  //print('Me puchasteeeee!!!');
+                },
+                child: Text('Aprieta!'),
+                //color: Colors.pink,
+            )
+          ),
+        ])//cree la clase btnone porue quiero mas tarjetitas
+        )
+
+    );
+  }
+}
+
+class btnone extends StatelessWidget {
+
+  final Widget child;
+
+  const btnone({
+    Key key,
+    this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.2),
+       child: Column(
+          mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+            this.child,
+            SizedBox(height: 10),
+            Text('Descripcion de una imagen creo ', textAlign: TextAlign.center,)
+    ],
+    )
+    )
+    );
+  }
+}
+*/
+
+
+/*class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -49,7 +224,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+/*class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -112,6 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+    );*/
+
+  //}
+}*/
